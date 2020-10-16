@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="04487dd9-edf5-4de7-966d-0a236ccbce00" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/covid-tracker/.browserslistrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/e2e/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/covid-tracker/tslint.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ixJXm7E4X1O32Wesjk9j2pTvqZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04487dd9-edf5-4de7-966d-0a236ccbce00" name="Default Changelist" comment="" />
+      <created>1602843351778</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602843351778</updated>
+      <workItem from="1602843352998" duration="744000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
