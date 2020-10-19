@@ -40,7 +40,7 @@ export class DataService {
             raw[cs.country] = cs;
           }
         });
-        return data;
+        return Object.values(raw) as GlobalDataSummary[];
       })
     );
   }
