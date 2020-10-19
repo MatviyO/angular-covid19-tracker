@@ -6,10 +6,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  date: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.my();
+  }
+
+  my(): void {
+    this.date = Date.now();
+    let today = new Date();
+    let dd = today.getDate();
+
+    let mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+    if (dd < 10)
+    {
+      // @ts-ignore
+      dd = '0' + dd;
+    }
+
+    if (mm < 10)
+    {
+      // @ts-ignore
+      mm =  '0' + mm;
+    }
+    // @ts-ignore
+    today = dd + '-' + mm + '-' + yyyy;
+    console.log(today);
+    console.log(this.date);
   }
 
 }
