@@ -24,12 +24,14 @@ export class HomeComponent implements OnInit {
       .subscribe(
         {
           next: (res) => {
+            console.log(res);
+            this.globalData = res;
             res.forEach(cs => {
               if (!Number.isNaN(cs.confirmed)) {
                 this.totalActive += cs.active;
-                this.totalConfirmed += cs.totalConfirmed;
-                this.totalDeaths += cs.totalDeaths;
-                this.totalRecovered += cs.totalRecovered;
+                this.totalConfirmed += cs.confirmed;
+                this.totalDeaths += cs.deaths;
+                this.totalRecovered += cs.active;
               }
             });
           }

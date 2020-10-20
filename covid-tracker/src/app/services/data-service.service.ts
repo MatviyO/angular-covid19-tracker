@@ -29,7 +29,6 @@ export class DataService {
             active: +cols[10]
           };
           const temp: GlobalDataSummary = raw[cs.country];
-          console.log(temp);
           if (temp) {
             temp.active = cs.active + temp.active;
             temp.confirmed = cs.active + temp.confirmed;
