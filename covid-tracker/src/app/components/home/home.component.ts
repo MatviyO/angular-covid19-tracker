@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../services/data-service.service';
 import {GlobalDataSummary} from '../../models/global-data';
+import {GoogleChartInterface} from 'ng2-google-charts';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,9 @@ export class HomeComponent implements OnInit {
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
   date: number;
+  pieChart: GoogleChartInterface = {
+    chartType: 'PieChart'
+  };
 
   constructor(private dataService: DataService) {
   }
@@ -34,9 +38,23 @@ export class HomeComponent implements OnInit {
                 this.totalRecovered += cs.active;
               }
             });
+            this.initChart();
           }
         }
       );
+  }
+  initChart(): void {
+    const datatable = [];
+    datatable.push(['Country', 'Cases']);
+    this.globalData.forEach(cs => {
+      datatable.push([ cs.country, cs.confirmed]);
+    });
+    this.pieChart = {
+      chartType: 'PieChart',
+      dataTable: datatable,
+      options: {'Country': 'Cases'}
+    };
+
   }
 
   my(): void {
