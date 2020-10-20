@@ -4,11 +4,14 @@
   <div class="mr-auto d-flex justify-content-center">
     <div class="form-group col-lg-5">
       <label for="country">Select Country</label>
-      <select name="country" id="country" class="form-control">
-        <option value="c" *ngFor="let c of countries">{{c}}</option>
+      <select name="country" id="country" class="form-control" #input (change)="updateValue(input.value)">
+        <option value="{{c}}" *ngFor="let c of countries">{{c}}</option>
       </select>
     </div>
   </div>
+  <app-dashboard-card [totalActive]="totalActive" [totalConfirmed]="totalConfirmed" [totalDeaths]="totalDeaths"
+                      [totalRecovered]="totalRecovered"
+  ></app-dashboard-card>
 
 
 </div>
