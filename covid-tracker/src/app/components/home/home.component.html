@@ -5,5 +5,41 @@
     [totalRecovered]="totalRecovered"
   ></app-dashboard-card>
 </div>
+<div class="ui form">
+  <div class="inline fields">
+    <label>Select Case Type:</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="confirmed" name="casetype" #confirmed (click)="updateChart(confirmed)" value="c" checked="" tabindex="0" class="hidden">
+        <label for="confirmed">Confirmed</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="deaths" name="casetype"  #deaths (click)="updateChart(deaths)" value="d" checked="" tabindex="0" class="hidden">
+        <label for="deaths">Deaths</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="recovered" name="casetype"  #recovered (click)="updateChart(recovered)" value="r" checked="" tabindex="0" class="hidden">
+        <label for="recovered">Recovered</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="active" name="casetype"  #active (click)="updateChart(active)" value="a" checked="" tabindex="0" class="hidden">
+        <label for="active">Active</label>
+      </div>
+    </div>
+  </div>
+</div>
 
-<google-chart [data]="pieChart" ></google-chart>
+<div class="row">
+  <div class="col">
+    <google-chart [data]="pieChart" ></google-chart>
+  </div>
+  <div class="col">
+    <google-chart [data]="columnChart" ></google-chart>
+  </div>
+</div>

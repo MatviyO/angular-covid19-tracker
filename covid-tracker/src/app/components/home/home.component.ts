@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
   pieChart: GoogleChartInterface = {
     chartType: 'PieChart'
   };
+  columnChart: GoogleChartInterface = {
+    chartType: 'columnChart'
+  };
 
   constructor(private dataService: DataService) {
   }
@@ -43,17 +46,29 @@ export class HomeComponent implements OnInit {
         }
       );
   }
-  initChart(): void {
+  initChart(caseType: string): void {
     const datatable = [];
     datatable.push(['Country', 'Cases']);
     this.globalData.forEach(cs => {
-      datatable.push([ cs.country, cs.confirmed]);
+      const value = '';
+
+      if (cs.confirmed > 2000) {
+        datatable.push([ cs.country, cs.confirmed]);
+      }
     });
     this.pieChart = {
       chartType: 'PieChart',
       dataTable: datatable,
-      options: {'Country': 'Cases'}
+      options: { height: 500 }
     };
+    this.columnChart = {
+      chartType: 'ColumnChart',
+      dataTable: datatable,
+      options: { height: 500 }
+    };
+  }
+  updateChart(value: HTMLInputElement): void {
+
 
   }
 
