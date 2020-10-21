@@ -4,6 +4,7 @@ import { GlobalDataSummary } from 'src/app/models/gloabl-data';
 import { DateWiseData } from 'src/app/models/date-wise-data';
 import { merge } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {GoogleChartInterface} from 'ng2-google-charts';
 
 @Component({
   selector: 'app-countries',
@@ -21,12 +22,8 @@ export class CountriesComponent implements OnInit {
   selectedCountryData: DateWiseData[];
   dateWiseData ;
   loading = true;
-  options: {
-    height: 500,
-    animation: {
-      duration: 1000,
-      easing: 'out',
-    },
+  lineChart: GoogleChartInterface = {
+    chartType: 'LineChart'
   };
 
   constructor(private service: DataServiceService) { }
@@ -39,7 +36,7 @@ export class CountriesComponent implements OnInit {
           this.dateWiseData = result;
         })
       ),
-      this.service.getGlobalData().pipe(map(result => {
+      this.service.getGlobalData().pipe(map((result: any) => {
         this.data = result;
         this.data.forEach(cs => {
           this.countries.push(cs.country);
@@ -55,18 +52,17 @@ export class CountriesComponent implements OnInit {
     );
   }
 
-  updateChart(): any {
-    const dataTable = [];
-    dataTable.push(['Date' , 'Cases']);
-    this.selectedCountryData.forEach(cs => {
-      dataTable.push([cs.date , cs.cases]);
-    });
-  }
+  // updateChart(): any {
+  //   this.dataTable.push(['Date' , 'Cases']);
+  //   this.selectedCountryData.forEach(cs => {
+  //     this.dataTable.push([cs.date , cs.cases]);
+  //     console.log(this.dataTable);
+  //   });
+  // }
 
   updateValues(country: string): any {
-    console.log(country);
     this.data.forEach(cs => {
-      if (cs.country === country) {
+      if (cs.country === country){
         this.totalActive = cs.active;
         this.totalDeaths = cs.deaths;
         this.totalRecovered = cs.recovered;

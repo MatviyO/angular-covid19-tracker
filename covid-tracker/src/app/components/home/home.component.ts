@@ -62,14 +62,12 @@ export class HomeComponent implements OnInit {
 
 
   updateChart(input: HTMLInputElement): any {
-    console.log(input.value);
     this.initChart(input.value);
   }
 
   initChart(caseType: string): any {
 
     this.datatable = [];
-    // this.datatable.push(["Country", "Cases"])
     this.globalData.forEach(cs => {
       let value: number ;
       if (caseType === 'c') {
@@ -95,13 +93,9 @@ export class HomeComponent implements OnInit {
         }
       }
 
-
       this.datatable.push([
             cs.country, value
           ]);
     });
-    console.log(this.datatable);
-
   }
-
 }
