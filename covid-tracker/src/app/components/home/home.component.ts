@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../services/data-service.service';
-import {GlobalDataSummary} from '../../models/global-data';
-import {GoogleChartInterface} from 'ng2-google-charts';
+import { Component, OnInit } from '@angular/core';
+import { DataServiceService } from 'src/app/services/data-service.service';
+import { GlobalDataSummary } from 'src/app/models/gloabl-data';
 
 @Component({
   selector: 'app-home',
@@ -9,88 +8,100 @@ import {GoogleChartInterface} from 'ng2-google-charts';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   totalConfirmed = 0;
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
+  loading = true;
   globalData: GlobalDataSummary[];
-  date: number;
-  pieChart: GoogleChartInterface = {
-    chartType: 'PieChart'
-  };
-  columnChart: GoogleChartInterface = {
-    chartType: 'columnChart'
+  datatable = [];
+  chart = {
+    PieChart : 'PieChart' ,
+    ColumnChart : 'ColumnChart' ,
+    LineChart : 'LineChart',
+    height: 500,
+    options: {
+      animation: {
+        duration: 1000,
+        easing: 'out',
+      },
+      is3D: true
+    }
   };
 
-  constructor(private dataService: DataService) {
-  }
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit(): void {
-    this.my();
+
     this.dataService.getGlobalData()
       .subscribe(
         {
-          next: (res) => {
-            console.log(res);
-            this.globalData = res;
-            res.forEach(cs => {
+          next: (result) => {
+            console.log(result);
+            this.globalData = result;
+            result.forEach(cs => {
               if (!Number.isNaN(cs.confirmed)) {
                 this.totalActive += cs.active;
                 this.totalConfirmed += cs.confirmed;
                 this.totalDeaths += cs.deaths;
                 this.totalRecovered += cs.active;
               }
+
             });
-            this.initChart();
+
+            this.initChart('c');
+          },
+          complete : () => {
+            this.loading = false;
           }
         }
       );
   }
-  initChart(caseType: string): void {
-    const datatable = [];
-    datatable.push(['Country', 'Cases']);
+
+
+
+  updateChart(input: HTMLInputElement): any {
+    console.log(input.value);
+    this.initChart(input.value);
+  }
+
+  initChart(caseType: string): any {
+
+    this.datatable = [];
+    // this.datatable.push(["Country", "Cases"])
     this.globalData.forEach(cs => {
-      const value = '';
-
-      if (cs.confirmed > 2000) {
-        datatable.push([ cs.country, cs.confirmed]);
+      let value: number ;
+      if (caseType === 'c') {
+        if (cs.confirmed > 2000) {
+          value = cs.confirmed;
+        }
       }
+
+      if (caseType === 'a') {
+        if (cs.active > 2000) {
+          value = cs.active;
+        }
+      }
+      if (caseType === 'd') {
+        if (cs.deaths > 1000) {
+          value = cs.deaths;
+        }
+      }
+
+      if (caseType === 'r') {
+        if (cs.recovered > 2000) {
+            value = cs.recovered;
+        }
+      }
+
+
+      this.datatable.push([
+            cs.country, value
+          ]);
     });
-    this.pieChart = {
-      chartType: 'PieChart',
-      dataTable: datatable,
-      options: { height: 500 }
-    };
-    this.columnChart = {
-      chartType: 'ColumnChart',
-      dataTable: datatable,
-      options: { height: 500 }
-    };
-  }
-  updateChart(value: HTMLInputElement): void {
+    console.log(this.datatable);
 
-
-  }
-
-  my(): void {
-    this.date = Date.now();
-    let today = new Date();
-    let dd = today.getDate();
-
-    let mm = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
-    if (dd < 10) {
-      // @ts-ignore
-      dd = '0' + dd;
-    }
-
-    if (mm < 10) {
-      // @ts-ignore
-      mm = '0' + mm;
-    }
-    // @ts-ignore
-    today = dd + '-' + mm + '-' + yyyy;
-    console.log(today);
   }
 
 }
