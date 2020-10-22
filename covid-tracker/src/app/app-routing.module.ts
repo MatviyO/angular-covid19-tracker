@@ -6,8 +6,7 @@ import { CountriesComponent } from './components/countries/countries.component';
 
 const routes: Routes = [
   {path : '' , component : HomeComponent},
-  {path : 'countries' , component :CountriesComponent } 
-  
+  {path : 'countries' , component : CountriesComponent }
 ];
 
 @NgModule({

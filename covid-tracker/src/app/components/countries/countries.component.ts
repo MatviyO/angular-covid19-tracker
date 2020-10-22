@@ -4,7 +4,6 @@ import { GlobalDataSummary } from 'src/app/models/gloabl-data';
 import { DateWiseData } from 'src/app/models/date-wise-data';
 import { merge } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {GoogleChartInterface} from 'ng2-google-charts';
 
 @Component({
   selector: 'app-countries',
@@ -13,7 +12,7 @@ import {GoogleChartInterface} from 'ng2-google-charts';
 })
 export class CountriesComponent implements OnInit {
 
-  data: GlobalDataSummary[];
+  data1: GlobalDataSummary[];
   countries: string[] = [];
   totalConfirmed = 0;
   totalActive = 0;
@@ -22,10 +21,18 @@ export class CountriesComponent implements OnInit {
   selectedCountryData: DateWiseData[];
   dateWiseData ;
   loading = true;
-  lineChart: GoogleChartInterface = {
-    chartType: 'LineChart'
+  datatable = [];
+  chart = {
+    LineChart : 'LineChart',
+    height: 800,
+    options: {
+      animation: {
+        duration: 1000,
+        easing: 'out',
+      },
+      is3D: true
+    }
   };
-
   constructor(private service: DataServiceService) { }
 
   ngOnInit(): void {
@@ -37,31 +44,36 @@ export class CountriesComponent implements OnInit {
         })
       ),
       this.service.getGlobalData().pipe(map((result: any) => {
-        this.data = result;
-        this.data.forEach(cs => {
+        this.data1 = result;
+        this.data1.forEach(cs => {
           this.countries.push(cs.country);
         });
       }))
     ).subscribe(
       {
         complete : () => {
-         this.updateValues('India');
-         this.loading = false;
+          setTimeout(() => {
+            this.updateValues('India');
+          });
+          setTimeout(() => {
+            this.loading = false;
+          }, 1000);
         }
       }
     );
   }
 
-  // updateChart(): any {
-  //   this.dataTable.push(['Date' , 'Cases']);
-  //   this.selectedCountryData.forEach(cs => {
-  //     this.dataTable.push([cs.date , cs.cases]);
-  //     console.log(this.dataTable);
-  //   });
-  // }
+  updateChart(): any {
+    // this.datatable.push(['Cases' , 'Date']);
+    this.selectedCountryData.forEach(cs => {
+      const value: number = cs.cases;
+      console.log(value);
+      this.datatable.push([value, cs.date ]);
+    });
+  }
 
   updateValues(country: string): any {
-    this.data.forEach(cs => {
+    this.data1.forEach(cs => {
       if (cs.country === country){
         this.totalActive = cs.active;
         this.totalDeaths = cs.deaths;
@@ -69,7 +81,6 @@ export class CountriesComponent implements OnInit {
         this.totalConfirmed = cs.confirmed;
       }
     });
-
     this.selectedCountryData  = this.dateWiseData[country];
     this.updateChart();
   }
